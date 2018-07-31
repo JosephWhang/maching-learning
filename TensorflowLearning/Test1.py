@@ -2,7 +2,6 @@
     基本的 tensorflow 框架，实现了 y = x*0.1 + 0.3 参数的拟合。
 '''
 
-
 import tensorflow as tf
 import numpy as np
 
@@ -32,6 +31,16 @@ train = optimizer.minimize(loss)
 
 init = tf.initialize_all_variables()
 # 建立 tensorflow 的基本结构 end #
+
+# 初始化结构，激活神经网络的系统
+sess = tf.Session()
+sess.run(init)
+
+# 一步步训练，没隔20步打印一次
+for step in range(201):
+    sess.run(train)
+    if step % 20 == 0:
+        print(step, sess.run(Weights), sess.run(biases))
 
 
 
